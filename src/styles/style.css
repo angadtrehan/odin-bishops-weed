@@ -1,0 +1,40 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    background: rgb(8,42,0);
+    background: radial-gradient(circle, rgb(5, 29, 0) 0%, rgba(5,24,0,1) 100%);
+    position: relative;
+}
+.body {
+    overflow: hidden;
+}
+
+.loader {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.load-pic, .load-pic > svg {
+    height: auto;
+    width: 100%;
+}
+.loader:nth-child(1) {
+    transform: translateX(10%);
+    z-index: 1000;
+}
+.loader > div + div > svg {
+    transform: translateX(-21.5%) translateY(-6%) rotate(-11.5deg);
+    scale: 1.09;
+    z-index: 999;
+}
