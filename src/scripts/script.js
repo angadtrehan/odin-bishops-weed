@@ -1,19 +1,47 @@
 import "../styles/style.css"
+import { registerMouseStuff } from "./global.js";
+import { loadHomePage } from "./homepage.js";
+import { loadMenuPage } from "./menu.js";
+import { loadReservePage } from "./reserve.js";
 
-import MouseFollower from "mouse-follower";
-import gsap from "gsap";
+console.log("Ninki is the fucking best in the whole universe you hear me?");
+registerMouseStuff();
 
-console.log("Ninki");
+const homeBtn = document.querySelector("#home");
+const menuBtn = document.querySelector("#menu");
+const reserveBtn = document.querySelector("#reserve");
+let currentPage = 'home';
 
-MouseFollower.registerGSAP(gsap);
-const mouse = document.querySelector("#cursor");
-const bText = document.querySelector("#b");
-const wText = document.querySelector("#W");
+function clearContent() {
+    content.innerHTML = '';
+    homeBtn.classList.remove('active');
+    menuBtn.classList.remove('active');
+    reserveBtn.classList.remove('active');
+}
 
-const cursor = new MouseFollower({
-    el: mouse,
-    visible: true,
-    speed: 0.5,
-
+homeBtn.addEventListener('click', () => {
+    console.log('home clicked');
+    if (currentPage !== 'home') {
+        clearContent();
+        loadHomePage(content, homeBtn);
+    }
+    currentPage = 'home';
 });
-cursor.show();
+
+menuBtn.addEventListener('click', () => {
+    console.log('menu clicked');
+    if (currentPage !== 'menu') {
+        clearContent();
+        loadMenuPage(content, menuBtn);
+    }
+    currentPage = 'menu';
+});
+
+reserveBtn.addEventListener('click', () => {
+    console.log('menu clicked');
+    if (currentPage !== 'reserve') {
+        clearContent();
+        loadReservePage(content, reserveBtn);
+    }
+    currentPage = 'reserve';
+});

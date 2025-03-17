@@ -6,26 +6,40 @@
     box-sizing: border-box;
 }
 
-:root {
+body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 12pt;
     line-height: 1.5;
-    background: rgb(8,42,0);
-    background: radial-gradient(circle, rgb(5, 29, 0) 0%, rgba(5,24,0,1) 100%);
+    background: radial-gradient(circle, rgb(3, 19, 0) 0%, #030d00 100%);
     position: relative;
-    cursor: none;
+    overflow: hidden;
+    height: 100vh;
 }
 #cursor {
     position: absolute;
-    top: -20px;
-    left: -20px;
+    top: 5px;
+    left: 5px;
     display: inline-block;
     height: 40px;
     width: 40px;
-    background-color: rgba(240, 197, 103, 0.473);
+    background-color: #f0c56779;
     border-radius: 50%;
     backdrop-filter: blur(4px);
     box-shadow: 2px 2px 5px black;
+    z-index: 10000000;
+}
+#cursor-two {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    background-color: rgba(240, 197, 103, 0.473);
+    border-radius: 50%;
+    backdrop-filter: blur(3px);
+    box-shadow: 2px 2px 5px black;
+    z-index: 10000000;
 }
 .body {
     overflow: hidden;
@@ -39,15 +53,132 @@
     align-items: center;
 }
 .load-pic, .load-pic > svg {
-    height: auto;
+    height: 100%;
     width: 100%;
 }
-.loader:nth-child(1) {
-    transform: translateX(10%);
-    z-index: 1000;
-}
 .loader > div + div > svg {
-    transform: translateX(-21.5%) translateY(-6%) rotate(-11.5deg);
+    transform: translateX(-22%) translateY(-5.5%) rotate(-11.5deg);
     scale: 1.09;
-    z-index: 999;
+    transition: transform 0.3s ease-in-out;
+}
+
+#b {
+    z-index: 100;
+    transition: transform 0.3s ease-in-out;
+}
+
+header {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10%;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+nav {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header p {
+    color: beige;
+    margin-right: auto;
+    padding: 0 0 0 30px;
+    font-weight: 100;
+}
+.logo {
+    height: 50px;
+    width: 50px;
+    background-color: red;
+}
+.logo img {
+    height: 100%;
+    width: auto;
+}
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+}
+.nav-btn {
+    padding: 10px 0;
+    flex: 0;
+    flex-basis: 150px;
+    border: 0;
+    background: transparent;
+    color: beige;
+    font-size: 1.1rem;
+    border-bottom: 0;
+    transition: border-bottom 0.2s ease-in, color 0.2s ease-in; 
+    font-weight: 100;
+    text-align: center;
+}
+.nav-btn.active {
+    color: rgb(200, 166, 93);
+    border-bottom: 1px solid rgb(200, 166, 93);
+}
+.nav-btn:hover {
+    color: rgb(240, 197, 103);
+    border-bottom: 1px solid rgb(240, 197, 103);
+}
+#content {
+    display: none;
+    height: 90vh;
+    width: 100vw;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+h1 {
+    color: beige;
+    font-size: 2.5rem;
+    margin: auto;
+    line-height: 90vh;
+    text-align: center;
+    font-weight: 100;
+}
+
+form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-evenly;
+    color: beige;
+    font-size: 1.5rem;
+    padding: 10%;
+}
+form > label {
+    font-weight: 100;
+}
+form > input {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: beige;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid beige;
+    font-weight: 100;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+form > button {
+    padding: 15px 50px;
+    background-color: rgb(200, 166, 93);
+    color: rgb(3, 19, 0);
+    font-weight: 900;
+    border: 0;
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease-in-out;
+}
+form > button:hover {
+    background-color: rgb(240, 197, 103);
 }
